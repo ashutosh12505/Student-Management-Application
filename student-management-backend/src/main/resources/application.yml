@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: student-management
+
+  profiles:
+    active: default
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/student_management
+    username: javauser
+    password: password
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8080
+
+student:
+  message: Hello from application.yml
+  max-students: 100
+  registration-enabled: true

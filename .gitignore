@@ -1,0 +1,82 @@
+# ============================================================
+# IDE / Editor files
+# ============================================================
+
+.vscode/
+.idea/
+
+# Eclipse / STS generated files
+.classpath
+.project
+.settings/
+
+# ============================================================
+# Java / Maven
+# ============================================================
+
+# Maven build output
+**/target/
+
+# Compiled Java files
+*.class
+
+# Java package files
+*.jar
+*.war
+*.ear
+
+# Maven generated reports
+**/surefire-reports/
+**/failsafe-reports/
+
+# ============================================================
+# Node / React
+# ============================================================
+
+# Node dependencies
+**/node_modules/
+
+# React/Vite build output
+**/dist/
+**/build/
+
+# Test coverage
+**/coverage/
+
+# ============================================================
+# Environment / Secrets
+# ============================================================
+
+.env
+.env.*
+!.env.example
+
+# Spring Boot local configuration containing secrets
+application-local.properties
+application-local.yml
+application-local.yaml
+
+# ============================================================
+# Logs
+# ============================================================
+
+*.log
+logs/
+
+# ============================================================
+# Operating System files
+# ============================================================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================================
+# Temporary files
+# ============================================================
+
+*.tmp
+*.temp
+*.swp
+*.swo
+*~

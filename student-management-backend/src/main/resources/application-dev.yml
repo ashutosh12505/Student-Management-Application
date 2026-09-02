@@ -1,0 +1,4 @@
+student:
+  message: Hello from DEVELOPMENT profile
+  max-students: 200
+  registration-enabled: false
