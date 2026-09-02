@@ -12,13 +12,18 @@ pipeline {
 
         stage('Backend Build and Test') {
             steps {
-                bat 'student-management-backend\\mvnw.cmd clean test'
+                dir('student-management-backend') {
+                    bat 'mvnw.cmd clean test'
+                }
             }
         }
 
         stage('Frontend Build') {
             steps {
-                bat 'cd student-management-frontend && npm ci && npm run build'
+                dir('student-management-frontend') {
+                    bat 'npm ci'
+                    bat 'npm run build'
+                }
             }
         }
     }
