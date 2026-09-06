@@ -51,7 +51,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 dir('student-management-backend') {
-                    sh 'docker build -t student-management:jenkins .'
+                    sh 'docker build -t student-management:build-${BUILD_NUMBER} .'
                 }
             }
         }
