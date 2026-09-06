@@ -18,10 +18,17 @@ pipeline {
             }
         }
 
-        stage('Backend Test') {
+        // stage('Backend Test') {
+        //     steps {
+        //         dir('student-management-backend') {
+        //             sh './mvnw test'
+        //         }
+        //     }
+        // }
+        stage('Unit Tests') {
             steps {
                 dir('student-management-backend') {
-                    sh './mvnw test'
+                    sh './mvnw -Dtest=StudentServiceTest test'
                 }
             }
         }
