@@ -1,0 +1,21 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Backend Build') {
+            steps {
+                dir('student-management-backend') {
+                    sh './mvnw clean package -DskipTests'
+                }
+            }
+        }
+    }
+}
