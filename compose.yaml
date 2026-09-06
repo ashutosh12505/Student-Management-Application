@@ -1,0 +1,43 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: student_management
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - student-db-data:/var/lib/mysql
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./student-management-backend
+
+    container_name: student-management-container
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/student_management
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  student-db-data:
+    external: true

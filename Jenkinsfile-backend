@@ -17,5 +17,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Backend Test') {
+            steps {
+                dir('student-management-backend') {
+                    sh './mvnw test'
+                }
+            }
+        }
     }
 }
