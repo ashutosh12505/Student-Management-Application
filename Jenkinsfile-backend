@@ -48,10 +48,32 @@ pipeline {
                 }
             }
         }
-        stage('Docker Build') {
+        stage('Docker Build & Push') {
             steps {
                 dir('student-management-backend') {
-                    sh 'docker build -t student-management:build-${BUILD_NUMBER} .'
+                    withCredentials([
+                        usernamePassword(
+                            credentialsId: 'dockerhub-credentials',
+                            usernameVariable: 'DOCKERHUB_USERNAME',
+                            passwordVariable: 'DOCKERHUB_TOKEN'
+                        )
+                    ]) {
+                        sh '''
+                            set +x
+
+                            IMAGE_NAME="$DOCKERHUB_USERNAME/student-management-backend:build-${BUILD_NUMBER}"
+
+                            echo "$DOCKERHUB_TOKEN" | docker login \
+                                --username "$DOCKERHUB_USERNAME" \
+                                --password-stdin
+
+                            docker build -t "$IMAGE_NAME" .
+
+                            docker push "$IMAGE_NAME"
+
+                            docker logout
+                        '''
+                    }
                 }
             }
         }
