@@ -32,5 +32,14 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube Analysis') {
+            steps {
+                dir('student-management-backend') {
+                    withSonarQubeEnv('SonarQube') {
+                        sh './mvnw sonar:sonar -Dsonar.projectKey=student-management-backend'
+                    }
+                }
+            }
+        }
     }
 }
