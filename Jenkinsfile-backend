@@ -28,7 +28,7 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 dir('student-management-backend') {
-                    sh './mvnw -Dtest=StudentServiceTest test'
+                    sh './mvnw -Dtest=StudentServiceTest verify'
                 }
             }
         }
