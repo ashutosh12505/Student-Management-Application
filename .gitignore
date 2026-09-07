@@ -80,3 +80,6 @@ desktop.ini
 *.swp
 *.swo
 *~
+
+# Kubernetes secrets
+k8s/secret.yaml

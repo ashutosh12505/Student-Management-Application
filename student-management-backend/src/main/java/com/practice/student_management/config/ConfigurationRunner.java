@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConfigurationRunner implements CommandLineRunner {
 
-    private final StudentProperties studentProperties;
+    // private final StudentProperties studentProperties;
 
     public ConfigurationRunner(StudentProperties studentProperties) {
-        this.studentProperties = studentProperties;
+        // this.studentProperties = studentProperties;
     }
 
     @Override

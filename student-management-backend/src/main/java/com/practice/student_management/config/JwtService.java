@@ -3,8 +3,8 @@ package com.practice.student_management.config;
 import java.security.Key;
 import java.util.Date;
 
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
+// import org.springframework.boot.CommandLineRunner;
+// import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Jwts;

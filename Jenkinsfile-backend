@@ -77,5 +77,28 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Kubernetes') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockerhub-credentials',
+                        usernameVariable: 'DOCKERHUB_USERNAME',
+                        passwordVariable: 'DOCKERHUB_TOKEN'
+                    )
+                ]) {
+                    sh '''
+                        IMAGE_NAME="$DOCKERHUB_USERNAME/student-management-backend:build-${BUILD_NUMBER}"
+
+                        kubectl --kubeconfig=/var/jenkins_home/.kube/config set image \
+                            deployment/student-management \
+                            student-management="$IMAGE_NAME"
+
+                        kubectl --kubeconfig=/var/jenkins_home/.kube/config rollout status \
+                            deployment/student-management \
+                            --timeout=120s
+                    '''
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-management
+  labels:
+    app: student-management
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: student-management
+
+  template:
+    metadata:
+      labels:
+        app: student-management
+
+    spec:
+      containers:
+        - name: student-management
+          image: ashutosh12505/student-management-backend:build-12
+
+          ports:
+            - containerPort: 8080
+
+          envFrom:
+            - configMapRef:
+                name: student-db-config
+
+            - secretRef:
+                name: student-db-secret
