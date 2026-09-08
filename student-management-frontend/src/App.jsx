@@ -4,7 +4,8 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Dashboard from "./Dashboard";
 
-const API_URL = "http://localhost:8080";
+// const API_URL = "http://localhost:8080";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function App() {
 

@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: student-management-ingress
+spec:
+  ingressClassName: nginx
+
+  rules:
+    - http:
+        paths:
+
+          # Backend API
+          - path: /auth
+            pathType: Prefix
+            backend:
+              service:
+                name: student-management-service
+                port:
+                  number: 8080
+
+          - path: /students
+            pathType: Prefix
+            backend:
+              service:
+                name: student-management-service
+                port:
+                  number: 8080
+
+          # Frontend
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: student-management-frontend-service
+                port:
+                  number: 80

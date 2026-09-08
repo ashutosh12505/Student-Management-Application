@@ -24,7 +24,7 @@ services:
     build:
       context: ./student-management-backend
 
-    container_name: student-management-container
+    container_name: student-management-backend-container
 
     ports:
       - "8080:8080"
@@ -37,6 +37,18 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+
+  frontend:
+    build:
+      context: ./student-management-frontend
+
+    container_name: student-management-frontend-container
+
+    ports:
+      - "5173:80"
+
+    depends_on:
+      - backend
 
 volumes:
   student-db-data:

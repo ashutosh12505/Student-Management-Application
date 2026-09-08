@@ -1,0 +1,31 @@
+Jenkinsfile
+│
+├── Checkout
+│
+├── Backend Build
+│
+├── Backend Unit Tests
+│
+├── Frontend Install
+│
+├── Frontend Build
+│
+├── Frontend Tests
+│
+├── SonarQube Analysis
+│
+├── Quality Gate
+│
+├── Build Backend Docker Image
+│
+├── Build Frontend Docker Image
+│
+├── Push Backend Image
+│
+├── Push Frontend Image
+│
+├── Deploy Backend to Kubernetes
+│
+├── Deploy Frontend to Kubernetes
+│
+└── Verify Rollout
